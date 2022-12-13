@@ -54,6 +54,14 @@ alter table product modify stock number(5) default 0;
 --제품 테이블에서 재고 컬럼을 삭제
 alter table product drop column stock;
 
+--사용자 생성
+--create user 아이디 identified by 암호;
+create user scott identified by tiger;
+--암호 변경
+alter user scott identified by 123456;
+
+--전체 사용자 정보
+select * from dba_users;
 
 
 
