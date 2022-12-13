@@ -59,6 +59,13 @@ alter table product drop column stock;
 create user scott identified by tiger;
 --암호 변경
 alter user scott identified by 123456;
+--접속 권한
+grant connect to scott;
+--사용자 계정 잠금처리
+alter user scott account lock;
+--사용자 계정 잠금 해제 처리 
+alter user scott account unlock;
+
 
 --전체 사용자 정보
 select * from dba_users;
