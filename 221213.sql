@@ -66,6 +66,12 @@ alter user scott account lock;
 --사용자 계정 잠금 해제 처리 
 alter user scott account unlock;
 
+--테이블 이름 변경
+alter table employee rename to emp;
+--테이블 컬럼 변경 -- 기존 컬럼명 to 바꿀 컬럼명
+alter table emp rename column employee_name to emp_name;
+
+
 --전체 사용자 정보
 select * from dba_users;
 --전체 사용자가 가지고 있는 테이블 정보
