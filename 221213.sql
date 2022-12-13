@@ -52,7 +52,7 @@ alter table product modify stock number(5) default 0;
 
 --컬럼 삭제
 --제품 테이블에서 재고 컬럼을 삭제
-alter table product drop stock;
+alter table product drop column stock;
 
 
 
