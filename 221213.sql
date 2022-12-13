@@ -54,7 +54,7 @@ alter table product modify stock number(5) default 0;
 --제품 테이블에서 재고 컬럼을 삭제
 alter table product drop column stock;
 
---사용자 생성
+--사용자 생성 -> 사용자 계정 관리는 관리자 권한이 있어야함
 --create user 아이디 identified by 암호;
 create user scott identified by tiger;
 --암호 변경
@@ -66,9 +66,10 @@ alter user scott account lock;
 --사용자 계정 잠금 해제 처리 
 alter user scott account unlock;
 
-
 --전체 사용자 정보
 select * from dba_users;
+--전체 사용자가 가지고 있는 테이블 정보
+select * from dba_tables;
 
 
 
