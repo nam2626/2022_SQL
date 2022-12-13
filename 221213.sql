@@ -14,7 +14,7 @@ create table member(
     member_passwd varchar2(50 byte),
     member_name varchar2(15 byte),
     member_gender char(1 byte),
-    member_age number(3)
+    member_age number(3) default 0
 );
 --제품정보
 --제품일렬번호, 제품명, 제조사명, 금액
@@ -70,6 +70,8 @@ alter user scott account unlock;
 select * from dba_users;
 --전체 사용자가 가지고 있는 테이블 정보
 select * from dba_tables;
+--현재 사용자가 만든 테이블 정보
+select * from user_tables;
 
 
 
