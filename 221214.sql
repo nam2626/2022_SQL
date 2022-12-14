@@ -87,8 +87,15 @@ select * from product where product_maker like 'BMW' or product_maker like 'Merc
 or product_maker like 'Audi';
 select * from product where product_maker in('BMW','Mercedes-Benz','Audi');
 --제품테이블에서 제품금액이 70000이상 90000이하인 제품을 조회
+select * from product where product_price between 70000 and 90000;
 
 --제품 테이블에서 제조사가 Kia이면서 제품금액이 70000이상 90000이하인 제품을 조회
+select * from product 
+where product_price between 70000 and 90000 and product_maker like 'Kia';
+
+--제품 테이블에서 제품번호가 3번째 자리가 8, 4번째 자리가 9인 제품을 조회
+
+
 
 
 
