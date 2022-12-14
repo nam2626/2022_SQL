@@ -27,6 +27,19 @@ alter table member modify member_age number(3) default 0;
 
 commit;
 
+select sysdate from dual;
+--Employee 테이블에 데이터 5건 저장하는 INSERT문을 작성 후 실행
+insert into employee values('11111111','김철수','회계부',3000000,'2021-01-01');
+insert into employee values('11111112','이영희','경리부',2500000,'2022/01/05');
+insert into employee values('11111113','박영수','총무부',3600000,'2022/09/15');
+insert into employee values('11111114','장이성','관리부',2200000,'2022/03/25');
+insert into employee values('11111115','김우형','개발부',4500000,'2022/11/25');
+
+
+
+
+
+
 
 
 
