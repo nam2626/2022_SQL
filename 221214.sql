@@ -77,3 +77,19 @@ insert all
     into student(student_no,student_name,major_name,score)
     values('20221118','박길동','경영학과',3.11)
 select * from dual;
+
+--제품 테이블에서 제조사가 BMW인 제품을 조회
+select * from product where product_maker like 'BMW';
+--제품 테이블에서 제조사가 BMW이거나 제조사가 Mercedes인 제품을 조회
+select * from product where product_maker like 'BMW' or product_maker like 'Mercedes-Benz';
+--제품 테이블에서 제조사가 BMW이거나 Mercedes, Audi인 제품을 조회
+select * from product where product_maker like 'BMW' or product_maker like 'Mercedes-Benz'
+or product_maker like 'Audi';
+select * from product where product_maker in('BMW','Mercedes-Benz','Audi');
+--제품테이블에서 제품금액이 70000이상 90000이하인 제품을 조회
+
+--제품 테이블에서 제조사가 Kia이면서 제품금액이 70000이상 90000이하인 제품을 조회
+
+
+
+
