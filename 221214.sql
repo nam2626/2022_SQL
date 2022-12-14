@@ -94,9 +94,13 @@ select * from product
 where product_price between 70000 and 90000 and product_maker like 'Kia';
 
 --제품 테이블에서 제품번호가 3번째 자리가 8, 4번째 자리가 9인 제품을 조회
+select * from product where product_no like '__89____';
+select * from product where product_no like '__89%';
 
-
-
-
+--사원 테이블에서 부서명이 입력 안된 데이터를 조회
+--null을 체크할때는 is
+select * from employee where department_name is null;
+--사원 테이블에서 부서명이 입력된 데이터만 조회
+select * from employee where department_name is null;
 
 
