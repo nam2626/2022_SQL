@@ -10,4 +10,6 @@ values('20221114','장이성','국어국문학과',2.33);
 insert into student(student_no,student_name,major_name,score)
 values('20221115','김우형','생활체육학과',3.11);
 
+--회원 테이블에 데이터 5건 넣는 INSERT문을 작성 후 실행
+
 commit;
