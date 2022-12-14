@@ -45,6 +45,12 @@ select * from student where score > 2.0;
 --학점이 3.0 이하인 학생 목록을 조회
 select * from student where score <= 3.0;
 --학점이 2.0이상 3.0이하인 학생 목록을 조회
+select * from student where score >= 2.0 and score <= 3.0;
+--조건식에서 숫자 범위를 잡을 때 : 컬럼명 between A and B --> A부터 B까지
+select * from student where score between 2.0 and 3.0;
+--학점이 3.0인 학생을 조회
+select * from student where score = 3.0;
+--학점이 3.0이 아닌 학생들만 조회
 
 
 
