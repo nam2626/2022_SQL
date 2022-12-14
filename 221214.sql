@@ -103,4 +103,13 @@ select * from employee where department_name is null;
 --사원 테이블에서 부서명이 입력된 데이터만 조회
 select * from employee where department_name is not null;
 
+--Update
+--회원 테이블에서 나이가 40 이상인 회원들의 비밀번호를 123456으로 수정하는 SQL문을 작성
+update member set member_passwd = '123456' where member_age >= 40;
+--회원 테이블에서 모든 회원의 나이를 2씩 감소, 나이는 음수가 나올수 없다.
+update member set member_age = member_age - 2 where member_age > 1;
+--학생 테이블에서 평점이 2점 미만인 학생들의 이름을 제적으로 수정하는 SQL문 작성 
+update student set student_name = '제적' where score < 2.0;
+
+
 
