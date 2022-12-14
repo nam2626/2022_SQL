@@ -51,9 +51,29 @@ select * from student where score between 2.0 and 3.0;
 --학점이 3.0인 학생을 조회
 select * from student where score = 3.0;
 --학점이 3.0이 아닌 학생들만 조회
+select * from student where score != 3.0;
+select * from student where score <> 3.0;
+select * from student where NOT score = 3.0;
+--학과명이 경제학과인 학생만 조회
+select * from student where major_name = '경제학과';
+--문자열 비교
+select * from student where major_name like '경제학과';
+--학생 이름이 김씨인 학생만 조회
+select * from student where student_name like '김%';
+--학생 이름이 수로 끝나는 학생만 조회
+select * from student where student_name like '%수';
+--학과명에 경이 들어가는 학생만 조회
+select * from student where major_name like '%경%';
+-- _ 도 와일드 카드 문자, 한글자만 나타냄
+select * from student where student_name like '김__';
 
-
-
-
-
-
+--다중 INSERT문
+--학생 테이블에 데이터 3건을 추가
+insert all
+    into student(student_no,student_name,major_name,score) 
+    values('20221116','홍길동','정치외교학과',3.31)
+    into student(student_no,student_name,major_name,score)
+    values('20221117','김길동','경제학과',3.21)
+    into student(student_no,student_name,major_name,score)
+    values('20221118','박길동','경영학과',3.11)
+select * from dual;
