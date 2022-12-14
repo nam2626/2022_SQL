@@ -115,7 +115,7 @@ update student set student_name = '제적' where score < 2.0;
 --전체 학생데이터 삭제
 delete from student;
 --학생 테이블에서 제적 대상인 학생을 삭제하는 SQL문을 작성
-
+delete from student where student_name like '제적';
 
 
 
