@@ -101,6 +101,6 @@ select * from product where product_no like '__89%';
 --null을 체크할때는 is
 select * from employee where department_name is null;
 --사원 테이블에서 부서명이 입력된 데이터만 조회
-select * from employee where department_name is null;
+select * from employee where department_name is not null;
 
 
