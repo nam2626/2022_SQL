@@ -35,8 +35,16 @@ insert into employee values('11111113','박영수','총무부',3600000,'2022/09/15');
 insert into employee values('11111114','장이성','관리부',2200000,'2022/03/25');
 insert into employee values('11111115','김우형','개발부',4500000,'2022/11/25');
 
-
-
+--데이터 조회
+-- * --> 전체 컬럼
+select * from student;
+--학생 테이블 이름, 학번 만 조회
+select student_name, student_no from student;
+--학점이 2.0 초과인 학생 목록을 조회
+select * from student where score > 2.0;
+--학점이 3.0 이하인 학생 목록을 조회
+select * from student where score <= 3.0;
+--학점이 2.0이상 3.0이하인 학생 목록을 조회
 
 
 
