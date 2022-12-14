@@ -111,5 +111,14 @@ update member set member_age = member_age - 2 where member_age > 1;
 --학생 테이블에서 평점이 2점 미만인 학생들의 이름을 제적으로 수정하는 SQL문 작성 
 update student set student_name = '제적' where score < 2.0;
 
+--Delete
+--전체 학생데이터 삭제
+delete from student;
+--학생 테이블에서 제적 대상인 학생을 삭제하는 SQL문을 작성
+
+
+
+
+
 
 
