@@ -40,5 +40,35 @@ select replace('AAAAAAABBBBBCCCC','B','F') from dual;
 --학생테이블에서 데이터들 중 이름 컬럼에 공백이 있는 학생의 이름을 공백을 지워서 업데이트 하시오.
 update student set student_name = replace(student_name, ' ', '') 
 where instr(student_name, ' ') <> 0;
+--LPAD, RPAD --> 원하는 문자열 개수만큼 남은 부분에 지정한 문자열로 채워주는 함수
+SELECT RPAD('871211-1',14,'*') FROM DUAL;
+SELECT LPAD('871211-1',14,'*') FROM DUAL;
+SELECT LPAD('ABC',10,'1234') FROM DUAL;
+SELECT RPAD('ABC',10,'1234') FROM DUAL;
+--LTRIM, RTRIM : 좌우에 지정한 문자열을 제거
+SELECT LTRIM('AAAABBBBBCCCCCDDDDDDAAAAA','A') FROM DUAL;
+SELECT RTRIM('AAAABBBBBCCCCCDDDDDDAAAAA','A') FROM DUAL;
+--TRIM : 필요없는 좌우 공백을 제거
+SELECT TRIM('    A A B     ') FROM DUAL;
+SELECT length(TRIM('    A A B     ')) FROM DUAL;
+-----------------------------------------------------------------------------------
+--ROUND : 원하는 자리수에서 반올림
+select round(123.456,-2) from dual;
+select round(123.456,-1) from dual;
+select round(123.456,0) from dual;
+select round(123.456,1) from dual;
+select round(123.456,2) from dual;
+--TRUNC : 원하는 자리수에서 데이터를 자름
+select trunc(123.456,-2) from dual;
+select trunc(123.456,-1) from dual;
+select trunc(123.456,0) from dual;
+select trunc(123.456,1) from dual;
+select trunc(123.456,2) from dual;
+
+
+
+
+
+
 
 
