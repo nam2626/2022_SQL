@@ -72,6 +72,17 @@ select mod(5 , 4) from dual;
 SELECT POWER(2,10) FROM DUAL;
 --TO_NUMBER('문자열') : 문자열을 숫자로 바꿔주는 함수
 select '123' + 123,TO_NUMBER('123') + 123 from dual;
+--------------------------------------------------------------------------------
+--날짜 시간
+--현재 날짜 시간 조회
+select sysdate from dual;
+--오라클에서 지정된 현재 날짜 시간의 출력 포멧을 변경
+ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD HH24:MI:SS';
+ALTER SESSION SET NLS_DATE_FORMAT = 'YY/MM/DD';
+
+--오늘 날짜부터 지정날짜까지 남은 개월 수
+select abs(months_between(sysdate,'22/12/31')) from dual;
+
 
 
 
