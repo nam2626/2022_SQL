@@ -15,7 +15,9 @@ select LENGTHB('HELLO'), LENGTHB('안녕하세요') from dual;
 --CONCAT : 두 문자열을 하나로 합치기
 select CONCAT('Hello','World') from dual;
 --전화번호 데이터가 '010' '1111' '1234'를 CONCAT 함수를 이용해서 하나의 문자열로 합치기
-
-
+select concat('010', concat('1111','1234')) from dual;
+--문자열 붙이는 연산자 ||
+select '010' || '1111' || '1234' from dual;
+select student_no || student_name || major_name || score from student;
 
 
