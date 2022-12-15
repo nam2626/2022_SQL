@@ -64,7 +64,14 @@ select trunc(123.456,-1) from dual;
 select trunc(123.456,0) from dual;
 select trunc(123.456,1) from dual;
 select trunc(123.456,2) from dual;
-
+--올림 : ceil, 내림 : floor
+select ceil(123.456), floor(123.456) from dual;
+--나머지 나누기
+select mod(5 , 4) from dual;
+--POWER(N,M) : N의 M승
+SELECT POWER(2,10) FROM DUAL;
+--TO_NUMBER('문자열') : 문자열을 숫자로 바꿔주는 함수
+select '123' + 123,TO_NUMBER('123') + 123 from dual;
 
 
 
