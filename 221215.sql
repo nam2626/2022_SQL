@@ -82,11 +82,51 @@ ALTER SESSION SET NLS_DATE_FORMAT = 'YY/MM/DD';
 
 --오늘 날짜부터 지정날짜까지 남은 개월 수
 select abs(months_between(sysdate,'22/12/31')) from dual;
+--지정 날짜로부터 몇 개월 후 날짜
+select add_months(sysdate,2) from dual;
+--주어진 날짜 기준으로 돌아오는 날짜(원하는 요일)
+select next_day(sysdate,'화') from dual;
+--주어진 날짜 기준으로 날짜가 속한 달의 마지막 날
+select last_day(sysdate) from dual;
 
+--내일 날짜 출력
+select sysdate + 1 from dual;
+--문자열을 날짜로 변경
+select to_date('2022-12-31','YYYY-MM-DD') from dual;
+--연말까지 D-DAY 출력
+select ceil(to_date('22/12/31') - sysdate) from dual;
+select ceil(to_date('2022-12-31','YYYY-MM-DD') - sysdate) from dual;
 
+--TO_CHAR(데이터, '형식') 문자열로 변환
+SELECT TO_CHAR(SYSDATE,'YYYY-MM-DD') FROM DUAL;
+SELECT TO_CHAR(SYSDATE,'MON MONTH DY DAY') FROM DUAL;
 
-
-
+-------------------------------------------------------
+---그룹함수 : SUM, AVG, MAX, MIN, COUNT, STDDEV, VARIANCE
+-- SUM(컬럼명) : 그룹을 묶은 기준으로 해당 컬럼을 가지고 합을 구함
+-- 학과별 평점 총합을 조회 - SUM
+SELECT major_name, SUM(score) FROM STUDENT GROUP BY major_name;
+-- 학과별 평점 평균을 조회, 평균값은 소수 둘째짜리까지만 표시 - AVG
+SELECT major_name, TRUNC(AVG(score),2) AS AVG_SCORE FROM STUDENT GROUP BY major_name;
+-- 학과별 평점의 최대값, 최소값 조회
+SELECT major_name, MAX(SCORE), MIN(SCORE) FROM STUDENT GROUP BY major_name;
+-- 전체 평점의 최대값/최소값/총합
+SELECT MAX(SCORE), MIN(SCORE),SUM(SCORE), AVG(SCORE) FROM STUDENT;
+-- 학과별 인원수 조회
+SELECT major_name, COUNT(*) FROM STUDENT GROUP BY major_name;
+-- 학과별 평점의 표준편차와 분산의 결과를 조회
+SELECT major_name, STDDEV(SCORE), VARIANCE(SCORE) FROM STUDENT GROUP BY major_name;
+--학과별 인원수를 조회, 단 평점이 3.0 이상인 학생들만 대상으로 인원수를 조회
+SELECT major_name, count(score) FROM STUDENT
+WHERE score >= 3 GROUP BY major_name;
+--학과별 평점의 평균을 조회, 단 학과별 인원수가 3명 이상인 학과들만 대상으로 조회
+select major_name, TRUNC(AVG(score),2) AS AVG_SCORE FROM STUDENT
+GROUP BY major_name having count(*) >= 3;
+--성씨별 학생들 인원수와 평점을 출력
+select substr(student_name,1,1), count(*), avg(score) from student
+group by substr(student_name,1,1);
+--학과별 지원금 배정, 학과별 지원금 = 학과별 인원수 * 25000
+--학과명, 인원수, 지원금
 
 
 
