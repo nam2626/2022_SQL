@@ -127,6 +127,6 @@ select substr(student_name,1,1), count(*), avg(score) from student
 group by substr(student_name,1,1);
 --학과별 지원금 배정, 학과별 지원금 = 학과별 인원수 * 25000
 --학과명, 인원수, 지원금
-
+SELECT major_name, COUNT(*), COUNT(*) * 25000 FROM STUDENT GROUP BY major_name;
 
 
