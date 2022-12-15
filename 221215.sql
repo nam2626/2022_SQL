@@ -23,4 +23,22 @@ select 'drop table ' || table_name || ';' from user_tables;
 --문자열 추출
 --SUBSTR : 문자열 부분 추출(문자 기준으로 추출)
 select substr('1234567890', 5,4) from dual;
+select substr('안녕하세요',2,3) from dual;
+--주민등록번호 '841113-1246121' --> '841113-1******' 마스킹 처리
+select substr('841113-1246121',1,8) || '******' from dual;
+--바이트 단위로 문자열 추출
+SELECT SUBSTRB('안녕하세요',2,3) FROM DUAL;
+--문자열 검색 INSTR - 검색결과가 있으면 0보다 큰 값, 검색 결과가 없으면 0
+select instr('abcdefg','cd') from dual;
+select instr('abcdefg','cdf') from dual;
+--HELLO WORLD에 공백이 있는지 체크
+select instr('HELLO WORLD',' ') from dual;
+--테이블 NAME 컬럼에 공백을 넣지 않는 조건
+--check(instr(NAME,' ') = 0) -->이런 형태로 테이블의 제약조건에 들어감
+--문자열 바꾸기
+select replace('AAAAAAABBBBBCCCC','B','F') from dual;
+--학생테이블에서 데이터들 중 이름 컬럼에 공백이 있는 학생의 이름을 공백을 지워서 업데이트 하시오.
+update student set student_name = replace(student_name, ' ', '') 
+where instr(student_name, ' ') <> 0;
+
 
