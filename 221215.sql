@@ -19,5 +19,8 @@ select concat('010', concat('1111','1234')) from dual;
 --문자열 붙이는 연산자 ||
 select '010' || '1111' || '1234' from dual;
 select student_no || student_name || major_name || score from student;
-
+select 'drop table ' || table_name || ';' from user_tables;
+--문자열 추출
+--SUBSTR : 문자열 부분 추출(문자 기준으로 추출)
+select substr('1234567890', 5,4) from dual;
 
