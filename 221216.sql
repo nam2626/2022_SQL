@@ -68,6 +68,10 @@ create table major
 as
 select rownum as major_no, major_name from (select distinct major_name from student);
 
+--학과번호 추가
+alter table student add major_no number default 0;
+--학과번호 업데이트
+update student s set major_no = (select major_no from major m where s.major_name = m.major_name);
 
 
 
