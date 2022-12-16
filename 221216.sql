@@ -89,7 +89,10 @@ INSERT INTO student_scholarship VALUES(5,'20228664',1100000);
 INSERT INTO student_scholarship VALUES(6,'20223753',2300000);
 INSERT INTO student_scholarship VALUES(7,'20222235',780000);
 
-
+--학생정보 조회시 학번, 이름, 학과명, 평점 조회
+select s.student_no, s.student_name, m.major_name, s.score
+from student s, major m
+where s.major_no = m.major_no;
 
 
 
