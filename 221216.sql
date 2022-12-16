@@ -75,7 +75,19 @@ update student s set major_no = (select major_no from major m where s.major_name
 --학과명 컬럼 삭제
 alter table student drop column major_name;
 
-
+--장학금 테이블
+create table STUDENT_SCHOLARSHIP(
+    SCHOLARSHIP_NO NUMBER,
+    STUDENT_NO CHAR(8 BYTE),
+    MONEY NUMBER);
+    
+INSERT INTO student_scholarship VALUES(1,'20222981',500000);
+INSERT INTO student_scholarship VALUES(2,'20227788',1500000);
+INSERT INTO student_scholarship VALUES(3,'20224458',2200000);
+INSERT INTO student_scholarship VALUES(4,'20228270',540000);
+INSERT INTO student_scholarship VALUES(5,'20228664',1100000);
+INSERT INTO student_scholarship VALUES(6,'20223753',2300000);
+INSERT INTO student_scholarship VALUES(7,'20222235',780000);
 
 
 
