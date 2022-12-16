@@ -41,6 +41,18 @@ insert into table_b values('C','*');
 insert into table_b values('D','$');
 insert into table_b values('E','#');
 
+--동일 조인
+select * from table_a, table_b where table_b.code = table_a.code;
+
+
+
+
+
+
+
+
+
+
 
 
 
