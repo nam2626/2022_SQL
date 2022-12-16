@@ -2,3 +2,50 @@
 select drug_company, avg(ea) from drug_sell group by drug_company;
 --약품별 판매 개수(ea) 총합을 조회
 select drug_name, sum(ea) from drug_sell group by drug_name;
+--제약사별 판매하는 약품 개수를 조회
+select drug_company, count(distinct drug_name) from drug_sell group by drug_company;
+select drug_company, drug_name from drug_sell;
+--월별 약품 판매 개수 총합, 평균을 조회 - 평균은 올림처리해서 조회
+select to_char(sell_date,'MM'), sum(ea), ceil(avg(ea)) from drug_sell
+group by to_char(sell_date,'MM');
+select to_char(sell_date,'MM') from drug_sell;
+
+--요일별, 약품별 판매 개수 총합을 조회
+select to_char(sell_date,'DY'), drug_name, sum(ea) from drug_sell
+group by to_char(sell_date,'DY'), drug_name;
+
+--제약사, 월별 판매 개수 횟수를 조회, 단 판매개수가 60이상인 데이터만 대상으로 잡음
+select drug_company, to_char(sell_date,'MM'), count(*) 
+from drug_sell
+where ea >= 60 group by drug_company, to_char(sell_date,'MM')
+order by drug_company, to_char(sell_date,'MM');
+--------------------------------------------------------------------------------
+--조인
+create table table_a(
+    code char(1),
+    num number(1)
+);
+create table table_b(
+    code char(1),
+    val char(1)
+);
+
+insert into table_a values('A',1);
+insert into table_a values('B',2);
+insert into table_a values('C',3);
+insert into table_a values('F',5);
+
+insert into table_b values('A','+');
+insert into table_b values('B','-');
+insert into table_b values('C','*');
+insert into table_b values('D','$');
+insert into table_b values('E','#');
+
+
+
+
+
+
+
+
+
