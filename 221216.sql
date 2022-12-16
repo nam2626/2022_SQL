@@ -60,10 +60,13 @@ where tb.code(+) = ta.code and tb.code is null;
 select ta.*, tb.* from table_a ta, table_b tb
 where tb.code = ta.code(+) and ta.code is null;
 
+--major 테이블 만드는 과정
+select distinct major_name from student; --학과명만 전부 뽑음
+select rownum, major_name from (select distinct major_name from student); --row : 행번호
 
-
-
-
+create table major
+as
+select rownum as major_no, major_name from (select distinct major_name from student);
 
 
 
