@@ -107,5 +107,13 @@ from student s, major m
 where s.major_no = m.major_no(+);
 
 --학생 정보 중에서 학과 번호가 학과 테이블에 없는 학생들만 조회
+ select s.* from student s, major m 
+ where s.major_no = m.major_no(+) and m.major_no is null;
+
+--학생들중 장학금을 받는 학생들의 정보를 조회
+--학번 이름 평점 학과명 장학금 금액
+select s.student_no, s.student_name, s.score, m.major_name, ss.money 
+from student s, major m, student_scholarship ss
+where s.major_no = m.major_no and ss.student_no = s.student_no; 
 
 
