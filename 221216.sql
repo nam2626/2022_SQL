@@ -122,3 +122,19 @@ select s.student_no, s.student_name, s.score, m.major_name, ss.money
 from student s, major m, student_scholarship ss
 where s.major_no = m.major_no and ss.student_no(+) = s.student_no and ss.money is null; 
 
+--학과별, 평점의 평균(소수 2자리), 인원수를 조회
+--단, 학과번호가 일치하지 않는 학과명은 학과코드 오류로 조회
+-- 학과명  평점평균  학과별인원수
+select nvl(m.major_name,'학과코드오류'), round(avg(s.score),2), count(*)
+from student s, major m
+where s.major_no = m.major_no(+)
+group by nvl(m.major_name,'학과코드오류');
+
+--학과별 제적 대상자를 인원수를 조회
+--점수가 1.5 미만인 대상자들이 제적 대상자
+--단, 학과번호가 일치하지 않는 학과명은 학과코드 오류로 조회
+--학과명, 제적대상자 인원수, 정렬은 제적대상자 인원수가 높은 순서대로 조회
+select nvl(m.major_name,'학과코드오류'), count(*)
+from student s, major m
+where s.major_no = m.major_no(+) and s.score < 1.5
+group by nvl(m.major_name,'학과코드오류');
