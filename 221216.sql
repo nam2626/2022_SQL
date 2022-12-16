@@ -116,4 +116,9 @@ select s.student_no, s.student_name, s.score, m.major_name, ss.money
 from student s, major m, student_scholarship ss
 where s.major_no = m.major_no and ss.student_no = s.student_no; 
 
+--학생들중 장학금을 못받는 학생들의 정보를 조회
+--학번 이름 학과 평점 조회
+select s.student_no, s.student_name, s.score, m.major_name, ss.money 
+from student s, major m, student_scholarship ss
+where s.major_no = m.major_no and ss.student_no(+) = s.student_no and ss.money is null; 
 
