@@ -47,9 +47,18 @@ select ta.code, ta.num, tb.val from table_a ta, table_b tb where tb.code = ta.co
 select * from table_a natural join table_b;
 --교차 조인
 select * from table_a cross join table_b;
+--외부조인
+select ta.*, tb.* from table_a ta, table_b tb
+where tb.code(+) = ta.code;
 
+select ta.*, tb.* from table_a ta, table_b tb
+where tb.code = ta.code(+);
+--불일치 쿼리
+select ta.*, tb.* from table_a ta, table_b tb
+where tb.code(+) = ta.code and tb.code is null;
 
-
+select ta.*, tb.* from table_a ta, table_b tb
+where tb.code = ta.code(+) and ta.code is null;
 
 
 
