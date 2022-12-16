@@ -94,5 +94,18 @@ select s.student_no, s.student_name, m.major_name, s.score
 from student s, major m
 where s.major_no = m.major_no;
 
+--학생정보 조회시 학번, 이름, 학과명, 평점 조회 --> 일치하는 학과번호가 없어도 조회
+select s.student_no, s.student_name, m.major_name, s.score
+from student s, major m
+where s.major_no = m.major_no(+);
+
+select null,nvl(null,'널입니다') from dual;
+--학생정보 조회시 학번, 이름, 학과명, 평점 조회 --> 일치하는 학과번호가 없어도 조회
+--일치하는 학과명이 없으면, 학과번호 오류라고 출력
+select s.student_no, s.student_name, nvl(m.major_name,'학과번호 오류'), s.score
+from student s, major m
+where s.major_no = m.major_no(+);
+
+--학생 정보 중에서 학과 번호가 학과 테이블에 없는 학생들만 조회
 
 
