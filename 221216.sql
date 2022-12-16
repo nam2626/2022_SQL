@@ -42,9 +42,11 @@ insert into table_b values('D','$');
 insert into table_b values('E','#');
 
 --동일 조인
-select * from table_a, table_b where table_b.code = table_a.code;
-
-
+select ta.code, ta.num, tb.val from table_a ta, table_b tb where tb.code = ta.code;
+--자연 조인
+select * from table_a natural join table_b;
+--교차 조인
+select * from table_a cross join table_b;
 
 
 
