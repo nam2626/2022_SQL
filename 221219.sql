@@ -136,10 +136,16 @@ select to_char(sell_date,'MM') as month, car_no, sum(ea) as sum_ea
 from car_sell group by to_char(sell_date,'MM'), car_no)
 group by month) ;
 
+select * from car where car_id = '262831953';
 
+select distinct length(car_id) from car;
 
+--ÀÎµ¦½º »ý¼º
+create index car_sell_idx on car_sell(sell_no, car_no);
+--ÀÎµ¦½º ¸®ºôµù
+alter index car_sell_idx rebuild;
 
-
-
+--½ÃÄý½º
+create sequence car_sell_seq;
 
 
