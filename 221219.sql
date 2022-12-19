@@ -125,7 +125,16 @@ from car_sell group by to_char(sell_date,'MM'), car_no)
 group by month) ;
 
 --4. 조인이나 서브쿼리를 이용해서 3번 결과를 다시 조회
-
+--   (month, car_name, sum_ea)
+select sc.car_no, c.car_name, sc.month, sc.sum_ea from
+(select to_char(sell_date,'MM') as month, car_no, sum(ea) as sum_ea
+from car_sell group by to_char(sell_date,'MM'), car_no) sc,
+car c
+where sc.car_no = c.car_id and
+ (sc.month, sc.sum_ea) in(select month, max(sum_ea) as max_ea from(
+select to_char(sell_date,'MM') as month, car_no, sum(ea) as sum_ea
+from car_sell group by to_char(sell_date,'MM'), car_no)
+group by month) ;
 
 
 
