@@ -110,7 +110,10 @@ from car_sell group by car_no));
 select to_char(sell_date,'MM') as month, car_no, sum(ea) as sum_ea
 from car_sell group by to_char(sell_date,'MM'), car_no;
 --2. 1번 데이터를 기준으로 월별 최다 판매대수를 구하면
-
+select month, max(sum_ea) as max_ea from(
+select to_char(sell_date,'MM') as month, car_no, sum(ea) as sum_ea
+from car_sell group by to_char(sell_date,'MM'), car_no)
+group by month;
 --3. 1번 데이터와 2번 데이터를 기준으로 월별 최다 판매 차량 대수를 조회
 --   (month, car_no, sum_ea)
 --4. 조인이나 서브쿼리를 이용해서 3번 결과를 다시 조회
