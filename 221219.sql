@@ -54,3 +54,31 @@ group by major_name;
 
 --자동차 정보를 조회 (car, car_maker)
 --car_id, car_name, maker_name, price
+select c.car_id, c.car_name, cm.maker_name, c.price
+from car c, car_maker cm
+where c.maker_no = cm.maker_no;
+
+--제조사별, 차량 종류 개수, 평균 판매가를 조회
+--maker_name, 개수, 판매가 평균
+select cm.maker_name, count(*) as car_count, ceil(avg(c.price)) as car_avg_price
+from car c, car_maker cm
+where c.maker_no = cm.maker_no group by cm.maker_name;
+
+select (select maker_name from car_maker cm where cm.maker_no = c.maker_no) as maker_name,
+c.car_count, c.car_avg_price
+from (select maker_no, count(*) as car_count,
+ ceil(avg(price)) as car_avg_price from car group by maker_no) c;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
