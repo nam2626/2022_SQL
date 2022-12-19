@@ -52,4 +52,5 @@ where s.major_no = m.major_no(+) and
 s.student_no not in(select student_no from student_scholarship))
 group by major_name;
 
---테스트
+--자동차 정보를 조회 (car, car_maker)
+--car_id, car_name, maker_name, price
