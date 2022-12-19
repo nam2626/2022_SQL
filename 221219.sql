@@ -94,6 +94,29 @@ where c.maker_no = cm.maker_no and (c.price = (select max(price) from car) or
 c.price = (select min(price) from car));
 --차량 판매 정보 중 평균 판매대수 이상인 차량 정보를 출력
 --car_id, car_name, maker_name, sale_count(판매대수)
+--1. 차량별 총 판매 대수 조회
+select car_no, sum(ea) as sum_ea from car_sell group by car_no;
+--2. 1번 데이터를 전체 평균 판매 대수 조회
+select avg(sum_ea) from 
+(select car_no, floor(sum(ea)) as sum_ea from car_sell group by car_no);
+--3. 1번 데이터와 2번 데이터를 비교해서 평균 이상인 데이터를 조회
+select car_no, sum_ea from 
+(select car_no, floor(sum(ea)) as sum_ea from car_sell group by car_no)
+where sum_ea >= 
+(select avg(sum_ea) from (select car_no, floor(sum(ea)) as sum_ea 
+from car_sell group by car_no));
+--월별 최다 판매 차량 대수를 조회
+--1. 차량별 총 판매 대수 조회 (month, car_no, sum_ea)
+select to_char(sell_date,'MM') as month, car_no, sum(ea) as sum_ea
+from car_sell group by to_char(sell_date,'MM'), car_no;
+--2. 1번 데이터를 기준으로 월별 최다 판매대수를 구하면
+
+--3. 1번 데이터와 2번 데이터를 기준으로 월별 최다 판매 차량 대수를 조회
+--   (month, car_no, sum_ea)
+--4. 조인이나 서브쿼리를 이용해서 3번 결과를 다시 조회
+
+
+
 
 
 
