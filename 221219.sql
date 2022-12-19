@@ -69,13 +69,31 @@ c.car_count, c.car_avg_price
 from (select maker_no, count(*) as car_count,
  ceil(avg(price)) as car_avg_price from car group by maker_no) c;
 
+--최대 판매가를 가진 차량의 정보를 조회
+--car_id, car_name, maker_name, price
+select max(price) from car;
 
+select c.car_id, c.car_name, cm.maker_name, c.price
+from car c, car_maker cm
+where c.maker_no = cm.maker_no;
 
+select c.car_id, c.car_name, cm.maker_name, c.price
+from car c, car_maker cm
+where c.maker_no = cm.maker_no and c.price = (select max(price) from car);
 
+--최대 판매가와 최소 판매가를 가진 차량의 정보를 조회
+--car_id, car_name, maker_name, price
+select c.car_id, c.car_name, cm.maker_name, c.price
+from car c, car_maker cm
+where c.maker_no = cm.maker_no and c.price in((select max(price) from car)
+,(select min(price) from car));
 
-
-
-
+select c.car_id, c.car_name, cm.maker_name, c.price
+from car c, car_maker cm
+where c.maker_no = cm.maker_no and (c.price = (select max(price) from car) or
+c.price = (select min(price) from car));
+--차량 판매 정보 중 평균 판매대수 이상인 차량 정보를 출력
+--car_id, car_name, maker_name, sale_count(판매대수)
 
 
 
