@@ -52,3 +52,4 @@ where s.major_no = m.major_no(+) and
 s.student_no not in(select student_no from student_scholarship))
 group by major_name;
 
+--Å×½ºÆ®
