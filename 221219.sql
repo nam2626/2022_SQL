@@ -147,5 +147,15 @@ alter index car_sell_idx rebuild;
 
 --½ÃÄý½º
 create sequence car_sell_seq;
+drop SEQUENCE car_sell_seq;
+
+create sequence car_sell_seq
+start with 100
+maxvalue 120
+minvalue 100
+increment by 1
+cycle;
+
+
 
 

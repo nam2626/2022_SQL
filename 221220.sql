@@ -1,0 +1,50 @@
+--DRUG_SELL 테이블에 DRUG_NAME과 DRUG_COMPANY 를 인덱스로 작성
+--DRUG_SELL_IDX
+CREATE INDEX DRUG_SELL_IDX ON DRUG_SELL(DRUG_NAME,DRUG_COMPANY);
+ALTER INDEX DRUG_SELL_IDX REBUILD;
+
+--시퀸스
+create sequence car_sell_seq;
+drop SEQUENCE car_sell_seq;
+
+create sequence car_sell_seq
+start with 100
+maxvalue 120
+minvalue 100
+increment by 1
+cycle;
+--다음 순번을 가져옴
+SELECT CAR_SELL_SEQ.NEXTVAL FROM DUAL;
+--현재 값을 가져옴
+SELECT CAR_SELL_SEQ.CURRVAL FROM DUAL;
+--시작값이 20부터 마지막 값은 35이며, 1씩 증가, 순환 X
+CREATE SEQUENCE START_SEQ
+START WITH 20
+MAXVALUE 35
+NOCYCLE;
+
+SELECT START_SEQ.NEXTVAL FROM DUAL;
+--시퀸스 수정하는 부분 START WITH는 변경 불가
+ALTER SEQUENCE START_SEQ
+MAXVALUE 35
+MINVALUE 20
+NOCYCLE
+NOCACHE;
+
+--DRUG_SELL 테이블에 들어갈 시퀸스를 작성
+--시작값이 1001, 최대값 X, 1씩 증가, 순환 X
+CREATE SEQUENCE DRUG_SELL_SEQ
+START WITH 1001
+NOMAXVALUE
+INCREMENT BY 1
+NOCYCLE;
+
+
+
+
+
+
+
+
+
+
